@@ -22,7 +22,7 @@ Pour exécuter ce projet, vous n'avez besoin d'aucun logiciel ou bibliothèque s
 ## Structure du Projet
 - `index.html` : Contient le code HTML principal pour l'interface utilisateur.
 - `style.css` : Contient le code CSS pour le style de l'application.
-- `script.js` : (optionnel) Peut contenir les fonctions JavaScript pour la génération et la copie du mot de passe (actuellement inclus dans le fichier HTML pour simplicité).
+
 
 ## Auteur
-Créé par [Brocheton Enzo](
+Créé par [Brocheton Enzo]
