@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <title>Générateur de mot de passe</title>
+        <script>
+            function genererMotDePasse() {
+                var taille = document.getElementById("taille").value;
+                var inclureMaj = document.getElementById("maj").checked;
+                var inclureMin = document.getElementById("min").checked;
+                var inclureChiffres = document.getElementById("chiffres").checked;
+                var inclureSpeciaux = document.getElementById("speciaux").checked;
+                var caracteresPossibles = "";
+                var motDePasse = "";
+            
+                if (inclureMaj) caracteresPossibles += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                if (inclureMin) caracteresPossibles += "abcdefghijklmnopqrstuvwxyz";
+                if (inclureChiffres) caracteresPossibles += "0123456789";
+                if (inclureSpeciaux) caracteresPossibles += "!@#$%^&*()_+";
+            
+                if (caracteresPossibles.length === 0) {
+                    alert("Veuillez sélectionner au moins un type de caractère.");
+                    return;
+                }
+            
+                for (var i = 0; i < taille; i++) {
+                    var indexAleatoire = Math.floor(Math.random() * caracteresPossibles.length);
+                    motDePasse += caracteresPossibles[indexAleatoire];
+                }
+            
+                document.getElementById("resultat").value = motDePasse;
+            }
+
+            function copierMotDePasse() {
+                var motDePasse = document.getElementById("resultat");
+                motDePasse.select(); 
+                document.execCommand("copy");
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Générateur de mot de passe</h2>
+            <label for="taille">Taille:</label>
+            <input type="number" id="taille" name="taille" min="1" max="128" value="12"><br>
+            <input type="checkbox" id="maj" checked name="maj">
+            <label for="maj">Inclure des majuscules</label><br>
+            <input type="checkbox" id="min" checked name="min">
+            <label for="min">Inclure des minuscules</label><br>
+            <input type="checkbox" id="chiffres" checked name="chiffres">
+            <label for="chiffres">Inclure des chiffres</label><br>
+            <input type="checkbox" id="speciaux" checked name="speciaux">
+            <label for="speciaux">Inclure des caractères spéciaux</label><br>
+            <button onclick="genererMotDePasse()">Générer</button>
+            <br><br>
+            <label for="resultat">Mot de passe généré:</label>
+            <input type="text" id="resultat" name="resultat" readonly onclick="copierMotDePasse()">
+            <small>Cliquez sur le mot de passe pour le copier</small>
+        </div>
+    </body>
+</html>
